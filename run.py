@@ -55,3 +55,13 @@ def calculate_growth(data_dict):
     print("Population Data with Growth:")
     pprint(data_dict)
     return data_dict
+
+
+def update_population_data(data):
+    """
+    Updates the 'statistics' worksheet with new data.
+    """
+    print("Updating statistics worksheet...\n")
+    worksheet_to_update = SHEET.worksheet('statistics')
+    worksheet_to_update.append_row(data)
+    print("Statistics worksheet updated successfully\n")

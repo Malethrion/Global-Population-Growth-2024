@@ -65,3 +65,17 @@ def update_population_data(data):
     worksheet_to_update = SHEET.worksheet('statistics')
     worksheet_to_update.append_row(data)
     print("Statistics worksheet updated successfully\n")
+
+
+def display_population_data(data_dict):
+    """
+    Displays the population data in a formatted text output.
+    """
+    print("\nPopulation by Country from 2023 to 2024:")
+    for entry in data_dict:
+        print(
+            f"Country: {entry['Country']}, "
+            f"2023 Population: {entry['Population 2023']}, "
+            f"2024 Population: {entry['Population 2024']}, "
+            f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%"
+        )

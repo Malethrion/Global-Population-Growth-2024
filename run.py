@@ -22,20 +22,29 @@ def get_population_data():
     statistics = SHEET.worksheet('statistics')
     data = statistics.get_all_values()
 
-    # Debugging print to check headers
     headers = data[0]
     print("Headers:", headers)
 
-    # Convert to a list of dictionaries
-    data_dict = [dict(zip(headers, row)) for row in data[1:]]
+    data_dict = []
+    for row in data[1:]:
+        entry = dict(zip(headers, row))
 
-    # Convert 2023 and 2024 population fields to integers
-    for entry in data_dict:
-        if 'Population 2023' in entry and 'Population 2024' in entry:
-            entry['Population 2023'] = int(entry['Population 2023'])
-            entry['Population 2024'] = int(entry['Population 2024'])
-        else:
-            print(f"Missing population data in entry: {entry}")
+        try:
+            # Ensure the population data is numeric before converting
+            pop_2023 = entry['Population 2023'].replace(",", "")
+            pop_2024 = entry['Population 2024'].replace(",", "")
+            if pop_2023.isdigit() and pop_2024.isdigit():
+                entry['Population 2023'] = int(pop_2023)
+                entry['Population 2024'] = int(pop_2024)
+            else:
+                raise ValueError("Non-numeric population data")
+
+        except ValueError as e:
+            print(f"Error converting data for {entry['Country']}: {e}")
+            entry['Population 2023'] = 0
+            entry['Population 2024'] = 0
+
+        data_dict.append(entry)
 
     return data_dict
 
@@ -45,14 +54,16 @@ def calculate_growth(data_dict):
     Analyzes the population data and calculates growth from 2023 to 2024.
     """
     for entry in data_dict:
-        if 'Population 2023' in entry and 'Population 2024' in entry:
+        if 'Population 2023' in entry and entry['Population 2023'] > 0:
             entry['Growth Rate (%)'] = (
                 (entry['Population 2024'] - entry['Population 2023']) /
                 entry['Population 2023']
             ) * 100
+        else:
+            entry['Growth Rate (%)'] = 0  # Avoid division by zero
+            print(f"Warning: Division by zero avoided for {entry['Country']}")
 
     print("Population Data with Growth:")
-    pprint(data_dict)
     return data_dict
 
 
@@ -74,8 +85,8 @@ def display_population_data(data_dict):
     for entry in data_dict:
         print(
             f"Country: {entry['Country']}, "
-            f"Population 2023: {entry['Population 2023']}, "
-            f"Population 2024: {entry['Population 2024']}, "
+            f"2023 Population: {entry['Population 2023']}, "
+            f"2024 Population: {entry['Population 2024']}, "
             f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%"
         )
 

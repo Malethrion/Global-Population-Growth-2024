@@ -39,3 +39,19 @@ def get_population_data():
             print(f"Missing population data in entry: {entry}")
 
     return data_dict
+
+
+def calculate_growth(data_dict):
+    """
+    Analyzes the population data and calculates growth from 2023 to 2024.
+    """
+    for entry in data_dict:
+        if 'Population 2023' in entry and 'Population 2024' in entry:
+            entry['Growth Rate (%)'] = (
+                (entry['Population 2024'] - entry['Population 2023']) /
+                entry['Population 2023']
+            ) * 100
+
+    print("Population Data with Growth:")
+    pprint(data_dict)
+    return data_dict

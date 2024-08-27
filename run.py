@@ -74,8 +74,8 @@ def display_population_data(data_dict):
     for entry in data_dict:
         print(
             f"Country: {entry['Country']}, "
-            f"2023 Population: {entry['Population 2023']}, "
-            f"2024 Population: {entry['Population 2024']}, "
+            f"Population 2023: {entry['Population 2023']}, "
+            f"Population 2024: {entry['Population 2024']}, "
             f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%"
         )
 

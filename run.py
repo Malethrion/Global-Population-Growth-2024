@@ -84,10 +84,11 @@ def display_population_data(data_dict):
     print("\nPopulation by Country from 2023 to 2024:")
     for entry in data_dict:
         print(
-            f"Country: {entry['Country']}, "
-            f"2023 Population: {entry['Population 2023']}, "
-            f"2024 Population: {entry['Population 2024']}, "
-            f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%"
+            f"Country: {entry['Country']}\n"
+            f"2023 Population: {entry['Population 2023']}\n"
+            f"2024 Population: {entry['Population 2024']}\n"
+            f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%\n"
+            "-------------------------------------------"
         )
 
 
@@ -113,7 +114,24 @@ def handle_invalid_data(data_dict):
     return data_dict
 
 
-def main():
+def user_meny():
+    """
+    Placeholder text
+    """
+    try:
+        while True:
+            choice = input('Question 1')
+            if choice.isnumeric():
+                if number in range (1, 2):
+                print(choice) 
+                return choice   
+            print('1 or 2')
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def main():     
     """
     Main function to run all the steps.
     """
@@ -121,17 +139,20 @@ def main():
         population_data = get_population_data()
         population_data = handle_invalid_data(population_data)
         population_data_with_growth = calculate_growth(population_data)
+        choice = user_meny()
         display_population_data(population_data_with_growth)
 
         # Example: Update the worksheet with new data
         # (replace with actual data)
         new_data = [
-            'Country', 'Population 2023', 'Population 2024', 'Growth Rate (%)'
+            'City', 'country', 'Population 2024', 'Growth Rate (%)'
         ]
         update_population_data(new_data)
 
     except Exception as e:
         print(f"An error occurred: {e}")
+
+    
 
 
 print("Welcome to Global Population Data Analysis for 2024")

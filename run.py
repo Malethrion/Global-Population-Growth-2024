@@ -31,8 +31,9 @@ def get_population_data():
 
         try:
             # Ensure the population data is numeric before converting
-            pop_2023 = entry['Population 2023'].replace(",", "")
-            pop_2024 = entry['Population 2024'].replace(",", "")
+            pop_2023 = entry.get('Population 2023', '').replace(",", "")
+            pop_2024 = entry.get('Population 2024', '').replace(",", "")
+
             if pop_2023.isdigit() and pop_2024.isdigit():
                 entry['Population 2023'] = int(pop_2023)
                 entry['Population 2024'] = int(pop_2024)
@@ -40,7 +41,11 @@ def get_population_data():
                 raise ValueError("Non-numeric population data")
 
         except ValueError as e:
-            print(f"Error converting data for {entry['Country']}: {e}")
+            print(
+                "Error converting data for {}: {}".format(
+                    entry.get('Country', 'Unknown'), e
+                )
+            )
             entry['Population 2023'] = 0
             entry['Population 2024'] = 0
 
@@ -84,10 +89,11 @@ def display_population_data(data_dict):
     print("\nPopulation by Country from 2023 to 2024:")
     for entry in data_dict:
         print(
-            f"Country: {entry['Country']}\n"
-            f"2023 Population: {entry['Population 2023']}\n"
-            f"2024 Population: {entry['Population 2024']}\n"
+            f"City: {entry.get('City', 'Unknown')}\n"
+            f"Country: {entry.get('Country', 'Unknown')}\n"
+            f"2023 Population: {entry.get('Population 2023', 'N/A')}\n"
             f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%\n"
+            f"2024 Population: {entry.get('Population 2024', 'N/A')}\n"
             "-------------------------------------------"
         )
 
@@ -163,7 +169,7 @@ def search_city_data(data_dict):
     city = input("Enter the city name to search: ").strip().lower()
     results = [
         entry for entry in data_dict
-        if entry['City'].strip().lower() == city
+        if entry.get('City', '').strip().lower() == city
     ]
 
     if results:

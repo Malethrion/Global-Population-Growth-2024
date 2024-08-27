@@ -135,8 +135,23 @@ def add_country_data():
             print("Population data must be numeric.")
             return
 
+        pop_2023 = int(pop_2023)
+        pop_2024 = int(pop_2024)
+
+        # Calculate the growth rate
+        if pop_2023 > 0:
+            growth_rate = ((pop_2024 - pop_2023) / pop_2023) * 100
+        else:
+            growth_rate = 0
+
         # Prepare the data to be added
-        new_data = [city, country, int(pop_2023), "", int(pop_2024)]
+        new_data = [
+            city,
+            country,
+            pop_2023,
+            growth_rate,
+            pop_2024
+        ]
 
         # Append to the Google Sheet
         update_population_data(new_data)

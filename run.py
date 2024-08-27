@@ -101,3 +101,28 @@ def handle_invalid_data(data_dict):
             entry['Population 2024'] = entry.get('Population 2024', 0)
 
     return data_dict
+
+
+def main():
+    """
+    Main function to run all the steps.
+    """
+    try:
+        population_data = get_population_data()
+        population_data = handle_invalid_data(population_data)
+        population_data_with_growth = calculate_growth(population_data)
+        display_population_data(population_data_with_growth)
+
+        # Example: Update the worksheet with new data
+        # (replace with actual data)
+        new_data = [
+            'Country', 'Population 2023', 'Population 2024', 'Growth Rate (%)'
+        ]
+        update_population_data(new_data)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+print("Welcome to Global Population Data Analysis for 2024")
+main()

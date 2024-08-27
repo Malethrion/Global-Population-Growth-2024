@@ -114,45 +114,110 @@ def handle_invalid_data(data_dict):
     return data_dict
 
 
-def user_meny():
+def add_country_data():
     """
-    Placeholder text
+    Adds new country data to the statistics worksheet.
     """
     try:
-        while True:
-            choice = input('Question 1')
-            if choice.isnumeric():
-                if number in range (1, 2):
-                print(choice) 
-                return choice   
-            print('1 or 2')
+        city = input("Enter city name: ")
+        country = input("Enter country name: ")
+        pop_2023 = input("Enter 2023 population: ")
+        pop_2024 = input("Enter 2024 population: ")
+
+        # Validate that the population inputs are numbers
+        if not pop_2023.isdigit() or not pop_2024.isdigit():
+            print("Population data must be numeric.")
+            return
+
+        # Prepare the data to be added
+        new_data = [city, country, int(pop_2023), "", int(pop_2024)]
+
+        # Append to the Google Sheet
+        update_population_data(new_data)
+        print(f"Data for {country} added successfully.")
 
     except Exception as e:
         print(f"An error occurred: {e}")
 
 
-def main():     
+def search_country_data(data_dict):
+    """
+    Search for a country's data by its name.
+    """
+    country = input("Enter the country name to search: ").strip().lower()
+    results = [
+        entry for entry in data_dict
+        if entry['Country'].strip().lower() == country
+    ]
+
+    if results:
+        display_population_data(results)
+    else:
+        print(f"No data found for {country.capitalize()}.")
+
+
+def search_city_data(data_dict):
+    """
+    Search for a city's data by its name.
+    """
+    city = input("Enter the city name to search: ").strip().lower()
+    results = [
+        entry for entry in data_dict
+        if entry['City'].strip().lower() == city
+    ]
+
+    if results:
+        display_population_data(results)
+    else:
+        print(f"No data found for {city.capitalize()}.")
+
+
+def user_menu():
+    """
+    Display a menu for user interaction.
+    """
+    try:
+        while True:
+            print("\nPlease choose an option:")
+            print("1. Display population data")
+            print("2. Add new country data")
+            print("3. Search for a country")
+            print("4. Search for a city")
+            print("5. Exit")
+            choice = input("Enter your choice: ")
+            if choice.isnumeric() and int(choice) in range(1, 6):
+                return int(choice)
+            print('Invalid choice. Please enter 1, 2, 3, 4, or 5.')
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def main():
     """
     Main function to run all the steps.
     """
     try:
-        population_data = get_population_data()
-        population_data = handle_invalid_data(population_data)
-        population_data_with_growth = calculate_growth(population_data)
-        choice = user_meny()
-        display_population_data(population_data_with_growth)
-
-        # Example: Update the worksheet with new data
-        # (replace with actual data)
-        new_data = [
-            'City', 'country', 'Population 2024', 'Growth Rate (%)'
-        ]
-        update_population_data(new_data)
+        while True:
+            choice = user_menu()
+            if choice == 1:
+                population_data = get_population_data()
+                population_data = handle_invalid_data(population_data)
+                population_data_with_growth = calculate_growth(population_data)
+                display_population_data(population_data_with_growth)
+            elif choice == 2:
+                add_country_data()
+            elif choice == 3:
+                population_data = get_population_data()
+                search_country_data(population_data)
+            elif choice == 4:
+                population_data = get_population_data()
+                search_city_data(population_data)
+            elif choice == 5:
+                print("Exiting the program.")
+                break
 
     except Exception as e:
         print(f"An error occurred: {e}")
-
-    
 
 
 print("Welcome to Global Population Data Analysis for 2024")

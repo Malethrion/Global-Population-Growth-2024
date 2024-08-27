@@ -79,3 +79,25 @@ def display_population_data(data_dict):
             f"2024 Population: {entry['Population 2024']}, "
             f"Growth Rate: {entry.get('Growth Rate (%)', 'N/A')}%"
         )
+
+
+def handle_invalid_data(data_dict):
+    """
+    Handle any potential invalid data in the list of dictionaries.
+    """
+    for entry in data_dict:
+        if not entry['Population 2023']:
+            print(
+                f"Warning: Missing 2023 data for {entry['Country']}. "
+                "Filling with zero."
+            )
+            entry['Population 2023'] = entry.get('Population 2023', 0)
+
+        if not entry['Population 2024']:
+            print(
+                f"Warning: Missing 2024 data for {entry['Country']}. "
+                "Filling with zero."
+            )
+            entry['Population 2024'] = entry.get('Population 2024', 0)
+
+    return data_dict

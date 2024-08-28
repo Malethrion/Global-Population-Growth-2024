@@ -30,10 +30,6 @@ def get_population_data():
         entry = dict(zip(headers, row))
 
         try:
-            # Ensure we're not processing the header row
-            if not entry['City'] or not entry['Country']:
-                continue
-
             # Ensure the population data is numeric before converting
             pop_2023 = entry.get('Population 2023', '').replace(",", "")
             pop_2024 = entry.get('Population 2024', '').replace(",", "")

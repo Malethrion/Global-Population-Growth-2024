@@ -213,7 +213,17 @@ def user_menu():
 # --- Main Program Execution ---
 def main():
     """
-    Main function to run all the steps.
+    Main function to handle the program's execution flow.
+
+    This function displays a user menu and executes different actions based on 
+    the user's choice. It allows the user to:
+    1. Display population data.
+    2. Add new country data.
+    3. Search for a country by name.
+    4. Search for a city by name.
+    5. Exit the program.
+
+    The function continuously loops until the user chooses to exit.
     """
     try:
         while True:

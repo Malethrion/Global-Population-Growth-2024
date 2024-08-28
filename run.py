@@ -230,5 +230,7 @@ def main():
         print(f"An error occurred: {e}")
 
 
-print("Welcome to Global Population Data Analysis for 2024")
-main()
+# Checks that the application is the main module
+if __name__ == "__main__":
+    print("Welcome to Global Population Data Analysis for 2024")
+    main()

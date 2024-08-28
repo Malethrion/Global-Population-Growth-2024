@@ -105,6 +105,7 @@ def handle_invalid_data(data_dict):
     return data_dict
 
 
+# --- add country function ---
 def add_country_data():
     """
     Adds new country data to the statistics worksheet.
@@ -146,6 +147,7 @@ def add_country_data():
         print(f"An error occurred: {e}")
 
 
+# --- search country function ---
 def search_country_data(data_dict):
     """
     Search for a country's data by its name.
@@ -162,6 +164,7 @@ def search_country_data(data_dict):
         print(f"No data found for {country.capitalize()}.")
 
 
+# --- search city function ---
 def search_city_data(data_dict):
     """
     Search for a city's data by its name.
@@ -199,6 +202,7 @@ def user_menu():
         print(f"An error occurred: {e}")
 
 
+# --- Main Program Execution ---
 def main():
     """
     Main function to run all the steps.

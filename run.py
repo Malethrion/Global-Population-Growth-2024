@@ -55,25 +55,6 @@ def get_population_data():
     return data_dict
 
 
-# --- Data Processing Functions ---
-def calculate_growth(data_dict):
-    """
-    Analyzes the population data and calculates growth from 2023 to 2024.
-    """
-    for entry in data_dict:
-        if 'Population 2023' in entry and entry['Population 2023'] > 0:
-            entry['Growth Rate (%)'] = (
-                (entry['Population 2024'] - entry['Population 2023']) /
-                entry['Population 2023']
-            ) * 100
-        else:
-            entry['Growth Rate (%)'] = 0  # Avoid division by zero
-            print(f"Warning: Division by zero avoided for {entry['Country']}")
-
-    print("Population Data with Growth:")
-    return data_dict
-
-
 def update_population_data(data):
     """
     Updates the 'statistics' worksheet with new data.
@@ -143,10 +124,10 @@ def add_country_data():
         pop_2024 = int(pop_2024)
 
         # Calculate the growth rate
-        if pop_2023 > 0:
-            growth_rate = ((pop_2024 - pop_2023) / pop_2023) * 100
-        else:
-            growth_rate = 0
+        growth_rate = (
+            ((pop_2024 - pop_2023) / pop_2023) * 100
+            if pop_2023 > 0 else 0
+        )
 
         # Prepare the data to be added
         new_data = [
@@ -228,8 +209,7 @@ def main():
             if choice == 1:
                 population_data = get_population_data()
                 population_data = handle_invalid_data(population_data)
-                population_data_with_growth = calculate_growth(population_data)
-                display_population_data(population_data_with_growth)
+                display_population_data(population_data)
             elif choice == 2:
                 add_country_data()
             elif choice == 3:

@@ -215,7 +215,7 @@ def main():
     """
     Main function to handle the program's execution flow.
 
-    This function displays a user menu and executes different actions based on 
+    This function displays a user menu and executes different actions based on
     the user's choice. It allows the user to:
     1. Display population data.
     2. Add new country data.

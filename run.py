@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
-# Define the scope and credentials for Google Sheets API
+# --- Constants and Configurations ---
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -14,6 +14,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('global_population_growth_2024')
 
 
+# --- Data Retrieval Functions ---
 def get_population_data():
     """
     Retrieves the population data from the 'statistics' worksheet.
@@ -54,6 +55,7 @@ def get_population_data():
     return data_dict
 
 
+# --- Data Processing Functions ---
 def calculate_growth(data_dict):
     """
     Analyzes the population data and calculates growth from 2023 to 2024.
@@ -82,6 +84,7 @@ def update_population_data(data):
     print("Statistics worksheet updated successfully\n")
 
 
+# --- Display Functions ---
 def display_population_data(data_dict):
     """
     Displays the population data in a formatted text output.
@@ -98,6 +101,7 @@ def display_population_data(data_dict):
         )
 
 
+# --- Error Handling Functions ---
 def handle_invalid_data(data_dict):
     """
     Handle any potential invalid data in the list of dictionaries.
@@ -193,6 +197,7 @@ def search_city_data(data_dict):
         print(f"No data found for {city.capitalize()}.")
 
 
+# --- User Interaction Functions ---
 def user_menu():
     """
     Display a menu for user interaction.

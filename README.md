@@ -46,3 +46,30 @@ Welcome to the Global Population Data Analysis for 2024, a Python-based command-
 - **Search Functionality:** Searched for existing and non-existing countries/cities to validate the search logic.
 - **Error Handling:** Inputted invalid data (e.g., non-numeric population) to check if the program handles errors correctly.
 
+## Deployment
+
+### Local Deployment
+
+To deploy this project locally:
+
+1. Clone the Repository:
+   ```bash
+   git clone https://github.com/yourusername/global_population_data_analysis.git
+
+2. Install Dependencies:
+   ```bash
+   pip install gspread google-auth
+
+3. Setup Google Sheets API: Obtain your creds.json file from Google Cloud Console and place it in the project directory.
+
+4. Run the Application:
+   ```bash
+   python3 run.py
+
+## Credits
+### Content
+- Data provided by Global Population Statistics.
+### Acknowledgements
+- Inspired by the Love Sandwiches project from Code Institute.
+### Further Info About Commits
+- Frequent commits with clear and concise commit messages help track changes and ensure the project’s evolution is well-documented.

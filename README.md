@@ -2,6 +2,7 @@
 
 Welcome to the Global Population Data Analysis for 2024, a Python-based command-line application designed to manage, analyze, and display global population data. This application interacts with a Google Sheets document to fetch, update, and display population statistics by country and city. It also allows users to add new data entries, search for specific countries or cities, and view population growth rates from 2023 to 2024.
 
+[Here is the live version](https://global-population-growth-2024-4efbbdecc3dc.herokuapp.com/)
 ## User Experience (UX)
 
 ### First-Time User Goals
@@ -19,7 +20,9 @@ Welcome to the Global Population Data Analysis for 2024, a Python-based command-
 - **Data Retrieval:** Fetches population data from a Google Sheets document.
 - **Data Display:** Displays population statistics by country and city, including growth rates.
 - **Data Management:** Allows users to add new country and city data, with automatic growth rate calculation.
+![add country](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/addcountry.png)
 - **Search Functionality:** Enables users to search for population data by country or city name.
+![search country](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/searchcountry.png)
 - **User-Friendly Menu:** Provides a clear, menu-driven interface for user interactions.
 
 ### Features Left to Implement

@@ -26,3 +26,23 @@ Welcome to the Global Population Data Analysis for 2024, a Python-based command-
 - **Advanced Data Analytics:** Add more detailed analytics features for deeper insights into population trends.
 - **Visualization:** Implement data visualization features, such as graphs or charts, to represent population growth.
 
+## Technologies Used
+
+### Languages and Libraries
+- **Python**
+- **gspread:** To interact with Google Sheets API.
+- **google-auth:** For Google Sheets authentication.
+
+## Testing
+
+### Validator Testing
+- **Python Code:** Ensured no significant issues were found by running the code through a linter.
+- **Google Sheets Connection:** Verified that data retrieval and updates are functioning correctly.
+- **User Interaction:** Tested each menu option to ensure correct behavior and error handling.
+
+### Manual Testing Procedures
+- **Data Retrieval:** Retrieved data from the Google Sheet to check the connection and data integrity.
+- **Data Entry:** Added new country and city data, ensuring the growth rate calculation is accurate.
+- **Search Functionality:** Searched for existing and non-existing countries/cities to validate the search logic.
+- **Error Handling:** Inputted invalid data (e.g., non-numeric population) to check if the program handles errors correctly.
+

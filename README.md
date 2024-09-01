@@ -54,7 +54,7 @@ To deploy this project locally:
 
 1. Clone the Repository:
    ```bash
-   git clone https://github.com/yourusername/global_population_data_analysis.git
+   git clone https://github.com/Malethrion/Global-Population-Growth-2024.git
 
 2. Install Dependencies:
    ```bash

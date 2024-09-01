@@ -78,7 +78,8 @@ To deploy this project locally:
 
 ## Credits
 ### Content
-- Data provided by Global Population Statistics.
+- Population data provided by (https://www.macrotrends.net/).
+- Google sheet structure provided by [Global Population Statistics](https://www.kaggle.com/datasets/haseebindata/global-population-growth-2024). 
 ### Acknowledgements
 - Inspired by the Love Sandwiches project from Code Institute.
 ### Further Info About Commits

@@ -18,12 +18,19 @@ Welcome to the Global Population Data Analysis for 2024, a Python-based command-
 
 ### Existing Features
 - **Data Retrieval:** Fetches population data from a Google Sheets document.
+
+![google sheet](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/countryaddedtosheet.png)
 - **Data Display:** Displays population statistics by country and city, including growth rates.
 - **Data Management:** Allows users to add new country and city data, with automatic growth rate calculation.
+
 ![add country](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/addcountry.png)
 - **Search Functionality:** Enables users to search for population data by country or city name.
+
 ![search country](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/searchcountry.png)
+![search city](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/searchcity.png)
 - **User-Friendly Menu:** Provides a clear, menu-driven interface for user interactions.
+
+![menu](https://raw.githubusercontent.com/Malethrion/Global-Population-Growth-2024/main/assets/images/menu.png)
 
 ### Features Left to Implement
 - **Advanced Data Analytics:** Add more detailed analytics features for deeper insights into population trends.
